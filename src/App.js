@@ -37,9 +37,9 @@ class App extends Component {
             <TodoInput  todoText="" addTodo={this.addTodo} />
             <ul>
                 {
-                    this.setate.todos.map((todo) => {
+                    this.state.todos.map((todo) => {
                        return <TodoItem todo={todo} key={todo.id} id={todo.id} removeTodo={this.removeTodo}/>
-                    });
+                    })
                 }
             </ul>
         </div>
@@ -48,11 +48,26 @@ class App extends Component {
   }
 
   addTodo(todoText){
-      console.log('text added: ' + todoText);
+      let todos = this.state.todos.slice();
+      todos.push(
+          {
+              id: this.state.nextId,
+              text: todoText
+          },
+      );
+
+      this.setState({
+          todos: todos,
+          nextId: ++this.state.nextId
+      });
   }
 
-  removeTodo() {
-      console.log('remove todo');
+  removeTodo(id) {
+      this.setState({
+          todos: this.state.todos.filter(),
+          nextId: --this.state.nextId
+      });
+
   }
 }
 

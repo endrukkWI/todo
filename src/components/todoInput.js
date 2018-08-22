@@ -6,7 +6,7 @@ export default class TodoInput extends React.Component {
         super( props );
 
         this.state = {
-            value: "test"
+            value: ""
         };
 
         this.handleChange = this.handleChange.bind(this);
